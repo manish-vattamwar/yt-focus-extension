@@ -1,9 +1,12 @@
 # YT Focus Mode — Chrome Extension
+## Preview
 
+![YT Focus Mode in action](https://github.com/user-attachments/assets/46f1bbbc-cd48-4c8c-8fd0-f8664c5dd86d)
 A Chrome extension that hides YouTube Shorts and video recommendations,
 with toggles to turn each feature on/off.
 
 ---
+<!-- <img width="1920" height="1080" alt="Screenshot from 2026-03-17 19-16-54" src="https://github.com/user-attachments/assets/46f1bbbc-cd48-4c8c-8fd0-f8664c5dd86d" /> -->
 
 ## File Structure
 
