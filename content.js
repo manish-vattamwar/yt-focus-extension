@@ -8,12 +8,31 @@
 
 // Shorts shelf on the homepage and subscriptions page
 const SHORTS_SELECTORS = [
-  'ytd-rich-shelf-renderer[is-shorts]',           // Shorts shelf on home
-  'ytd-reel-shelf-renderer',                       // Another shorts shelf variant
-  '[is-shorts]',                                   // Any element marked as shorts
-  'ytd-guide-entry-renderer a[href="/shorts"]',    // "Shorts" in the left sidebar
-  'ytd-mini-guide-entry-renderer a[href="/shorts"]' // "Shorts" in collapsed sidebar
+  'ytd-rich-shelf-renderer[is-shorts]',
+  'ytd-reel-shelf-renderer',
+  '[is-shorts]',
+  'ytd-guide-entry-renderer:has(a[href="/shorts"])',      // ← fixed
+  'ytd-mini-guide-entry-renderer:has(a[href="/shorts"])'  // ← fixed
 ].join(', ');
+```
+
+---
+
+## What changed and why?
+
+| Before | After |
+|---|---|
+| `ytd-guide-entry-renderer a[href="/shorts"]` | `ytd-guide-entry-renderer:has(a[href="/shorts"])` |
+
+The `:has()` is a CSS selector that means **"select the parent element IF it contains this child".**
+
+So instead of hiding just the `<a>` link inside, you're now hiding the **entire `ytd-guide-entry-renderer` block** — which is the whole sidebar item including its icon and text.
+
+Think of it like this:
+```
+ytd-guide-entry-renderer        ← this is the whole sidebar row (hide THIS)
+  └── a[href="/shorts"]         ← this is just the link inside (you were hiding this)
+        └── "Shorts" text + icon
 
 // Recommendations shown on the right side while watching a video
 const RECOMMENDATIONS_SELECTORS = [
